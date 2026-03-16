@@ -1,3 +1,4 @@
+
 public class Pilha {
     // Atributos
     private String[] elementos;
@@ -5,18 +6,30 @@ public class Pilha {
 
     // Construtor
     public Pilha(int capacidade) {
-       elementos = new String[capacidade];
-       tamanho = 0;
+        elementos = new String[capacidade];
+        tamanho = 0;
     }
 
     // Métodos
     public void empilha(String elemento) {
-        elementos[tamanho] = elemento;
-        tamanho = tamanho + 1;
+        if (!estaCheio()) {
+            elementos[tamanho] = elemento;
+            tamanho = tamanho + 1;
+        } else {
+            throw new IllegalStateException("A pilha está Cheia!");
+        }
     }
 
     public boolean estaVazia() {
         if (tamanho == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean estaCheio() {
+        if (tamanho == elementos.length) {
             return true;
         } else {
             return false;
